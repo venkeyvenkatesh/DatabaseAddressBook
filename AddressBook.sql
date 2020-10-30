@@ -78,6 +78,8 @@ update AddressBook set Type='Office' where First_Name='Aravind';
 --UC10 get the count of contacts based on type
 select * from AddressBook where Type='Friends';
 select * from AddressBook where Type='Family';
+select Type,count(*) as NoOfContacts from AddressBook group by Type;
+
 
 --UC11 Add a person to both friends and family
 insert into AddressBook values('kiran','maricherla','Mirthipadu',
