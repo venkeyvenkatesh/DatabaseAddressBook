@@ -85,3 +85,24 @@ select Type,count(*) as NoOfContacts from AddressBook group by Type;
 insert into AddressBook values('kiran','maricherla','Mirthipadu',
 'RJY','AP',533293,'+91 9876543210','kiran@gmail.com','Venkey','Family');
 
+select * from AddressBook;
+
+--UC12 create a Contact_Type table to remove redundancy
+create table Contact_Type (First_Name varchar(20) ,Type varchar(20) primary key(First_Name,Type));
+
+insert into Contact_Type values('kiran','Friends');
+insert into Contact_Type values('chaitanya','Family');
+insert into Contact_Type values('vijay','Friends');
+insert into Contact_Type values('prakash','Family');
+insert into Contact_Type values('Aravind','Office');
+insert into Contact_Type values('kiran','Family');
+--insert into Contact_Type values('kiran','Family');
+
+select * from Contact_Type;
+
+delete from AddressBook where First_Name='kiran' and Type='Family';
+
+alter table AddressBook drop column Type;
+
+--UC13 Ensure all retrive queries are working fine
+select a.First_Name,a.Last_Name ,b.Type from AddressBook a inner join Contact_Type b on a.First_Name=b.First_Name ; 
